@@ -1,0 +1,30 @@
+resources:
+  - name: cd_ecs_docker_opts
+    type: dockerOptions
+    versionTemplate:
+      linuxParameters:
+        initProcessEnabled: true
+      memory: 100
+      portMappings:
+        - 80:80
+
+  - name: cd_ecs_replicas
+    type: replicas
+    version:
+      count: 1
+
+jobs:
+  - name: cd_ecs_manifest
+    type: manifest
+    steps:
+     - IN: node_app_img_dh # defined here https://github.com/devops-recipes/node_app/blob/master/shippable.yml
+     - IN: cd_ecs_docker_opts
+     - IN: cd_ecs_replicas
+
+  - name: cd_ecs_deploy
+    type: deploy
+    steps:
+      - IN: cd_ecs_manifest
+      - IN: aws_ecs_cluster # defined here https://github.com/devops-recipes/prov_aws_ecs_terraform/blob/master/shippable.yml
+      - TASK: managed
+        deployMethod: replace
