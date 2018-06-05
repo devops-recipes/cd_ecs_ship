@@ -8,11 +8,6 @@ resources:
       portMappings:
         - 80:80
 
-  - name: cd_ecs_replicas
-    type: replicas
-    version:
-      count: 1
-
   - name: cd_ecs_env
     type: params
     version:
@@ -25,7 +20,6 @@ jobs:
     steps:
      - IN: node_app_img_dh # defined here https://github.com/devops-recipes/node_app/blob/master/shippable.yml
      - IN: cd_ecs_docker_opts
-     - IN: cd_ecs_replicas
      - IN: cd_ecs_env
     flags:
       - aws_ecs
