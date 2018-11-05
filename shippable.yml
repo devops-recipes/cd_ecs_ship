@@ -18,7 +18,7 @@ jobs:
   - name: cd_ecs_manifest
     type: manifest
     steps:
-     - IN: node_app_img_dh # defined here https://github.com/devops-recipes/node_app/blob/master/shippable.yml
+     - IN: node_app_img_jf # defined here https://github.com/devops-recipes/node_app/blob/master/shippable.yml
      - IN: cd_ecs_docker_opts
      - IN: cd_ecs_env
     flags:
