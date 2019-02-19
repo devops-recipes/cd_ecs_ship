@@ -1,2 +1,2 @@
-# prov_gcp_gce_ansible
-Provision an GCP GCE instance with Ansible
+# cd_ecs_ship
+Continuous Deployment to ECS with Shippable managed jobs
