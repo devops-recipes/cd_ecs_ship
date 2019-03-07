@@ -28,12 +28,11 @@ jobs:
 
   - name: cd_ecs_deploy
     type: deploy
+    method: upgrade
     steps:
       - IN: cd_ecs_manifest
       - IN: aws_ecs_cluster # defined here https://github.com/devops-recipes/prov_aws_ecs_terraform/blob/master/shippable.yml
         switch: off
-      - TASK: managed
-        deployMethod: replace
     flags:
       - aws_ecs
       - aws
